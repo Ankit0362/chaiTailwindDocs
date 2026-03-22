@@ -1,0 +1,79 @@
+html {
+  scroll-behavior: smooth;
+}
+
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+  transition: all 0.3s ease-in-out !important;
+  transition-delay: 0s !important;
+}
+
+.material-symbols-outlined {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e5e7eb;
+  border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
+.nav-link.active {
+  color: #3b82f6 !important;
+  font-weight: 600;
+  border-left: 2px solid #3b82f6;
+  margin-left: -2px;
+  padding-left: 14px;
+}
+
+.prose pre {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.dark .prose pre {
+  border-color: #374151;
+  background-color: #111827 !important;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.code-block-wrapper:hover .copy-btn {
+  opacity: 1;
+}
+
+.demo-hover-btn {
+  background-color: #3b82f6;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  border: none;
+}
+
+.demo-hover-btn:hover {
+  background-color: #2563eb;
+  transform: scale(1.05);
+}

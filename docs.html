@@ -1,0 +1,3808 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <script src="./theme-init.js"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChaiTailwind - Documentation</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./tailwind-config.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark-dimmed.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <script src="../chaiTailwind/chai.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body
+    class="bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans antialiased selection:bg-blue-500/30"
+  >
+    <header
+      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 h-16"
+    >
+      <div class="flex items-center gap-2">
+        <div
+          class="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-400 font-bold"
+        >
+          CT
+        </div>
+        <span class="text-lg font-bold tracking-tight">ChaiTailwind</span>
+        <span
+          class="ml-2 text-xs py-0.5 px-2 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full border border-gray-200 dark:border-gray-700"
+          >v2.0</span
+        >
+      </div>
+
+      <div class="flex-1 max-w-md mx-8 hidden md:block">
+        <div class="relative w-full group">
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-blue-500 transition-colors"
+            >search</span
+          >
+          <input
+            type="text"
+            class="w-full bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg pl-10 pr-4 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 transition-all placeholder:text-gray-500"
+            placeholder="Search documentation..."
+          />
+          <div class="absolute right-3 top-1/2 -translate-y-1/2 flex gap-1">
+            <kbd
+              class="hidden sm:inline-block font-mono text-[10px] font-medium text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded px-1.5 py-0.5"
+              >Ctrl</kbd
+            >
+            <kbd
+              class="hidden sm:inline-block font-mono text-[10px] font-medium text-gray-500 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded px-1.5 py-0.5"
+              >K</kbd
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="theme-toggle"
+          class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-colors"
+        >
+          <span class="material-symbols-outlined dark:hidden">dark_mode</span>
+          <span class="material-symbols-outlined hidden dark:block"
+            >light_mode</span
+          >
+        </button>
+        <a
+          href="#"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+          >GitHub</a
+        >
+      </div>
+    </header>
+
+    <div class="flex pt-16 min-h-screen">
+      <aside
+        class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 border-r border-gray-200 dark:border-gray-800 overflow-y-auto hidden md:block pb-10"
+      >
+        <nav class="px-6 py-8 text-sm space-y-8" id="sidebar-nav">
+          <div>
+            <h5 class="font-semibold text-gray-900 dark:text-white mb-3">
+              Getting Started
+            </h5>
+            <ul class="space-y-2 border-l border-gray-200 dark:border-gray-800">
+              <li>
+                <a
+                  href="#getting-started"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Installation</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#core-concepts"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >How It Works</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="font-semibold text-gray-900 dark:text-white mb-3">
+              Core Engine
+            </h5>
+            <ul class="space-y-2 border-l border-gray-200 dark:border-gray-800">
+              <li>
+                <a
+                  href="#display-position"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Display & Position</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#position-offsets"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Position Offsets</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#flex-alignment"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Flex & Alignment</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#spacing"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Spacing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#sizing"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Sizing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#colors"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Colors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#color-opacity"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Color Opacity</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#typography"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Typography</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#border-radius"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Border Radius</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#grid-system"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Grid System</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="font-semibold text-gray-900 dark:text-white mb-3">
+              Interactions
+            </h5>
+            <ul class="space-y-2 border-l border-gray-200 dark:border-gray-800">
+              <li>
+                <a
+                  href="#transitions"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Transitions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#animations"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Animations</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#animation-modifiers"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Animation Modifiers</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#variants"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Variants</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#responsive"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Responsive</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#dark-mode"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Dark Mode</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="font-semibold text-gray-900 dark:text-white mb-3">
+              Advanced
+            </h5>
+            <ul class="space-y-2 border-l border-gray-200 dark:border-gray-800">
+              <li>
+                <a
+                  href="#combining-utilities"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Combining Utilities</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#performance"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >Performance</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#api-reference"
+                  class="nav-link block pl-4 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
+                  >API Reference</a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </aside>
+
+      <main class="flex-1 md:ml-64 px-6 md:px-12 py-10 pb-32">
+        <div class="max-w-4xl mx-auto prose dark:prose-invert">
+          <p class="text-blue-500 font-semibold mb-2">ChaiTailwind 2.0</p>
+          <h1
+            class="text-4xl sm:text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6"
+          >
+            Developer Documentation
+          </h1>
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-12">
+            A lightning-fast, runtime-optimized CSS-in-JS utility engine. Styled
+            like standard Tailwind but executed purely in the browser under 1ms.
+          </p>
+
+          <section id="getting-started" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Getting Started
+              <a
+                href="#getting-started"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind is incredibly easy to set up. It doesn't require a
+              build step; instead, it generates utility classes on-the-fly right
+              in the browser.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white mt-8"
+            >
+              1. Installation
+            </h3>
+            <div
+              class="relative code-block-wrapper text-sm overflow-hidden mb-6"
+            >
+              <button
+                class="copy-btn px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs border border-gray-300 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700"
+                onclick="copyCode(this)"
+              >
+                Copy
+              </button>
+              <pre><code class="language-bash">npm i chai-tailwind-lemi</code></pre>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white mt-8"
+            >
+              2. Usage
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              Initialize the runtime in your main JavaScript file. Once
+              <code>init()</code> is called, ChaiTailwind will:
+            </p>
+            <ul
+              class="list-disc pl-6 space-y-1 mb-6 text-gray-600 dark:text-gray-400"
+            >
+              <li>
+                <strong>Scan the DOM</strong> for any classes matching the
+                <code>chai-*</code> prefix.
+              </li>
+              <li>
+                <strong>Generate CSS dynamically</strong> for exactly those
+                specific utility classes.
+              </li>
+              <li>
+                <strong>Inject styles</strong> directly into a dedicated
+                <code>&lt;style&gt;</code> tag in your browser's head.
+              </li>
+            </ul>
+
+            <div
+              class="relative code-block-wrapper text-sm overflow-hidden mb-8"
+            >
+              <button
+                class="copy-btn px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs border border-gray-300 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700"
+                onclick="copyCode(this)"
+              >
+                Copy
+              </button>
+              <pre><code class="language-javascript">import { init } from 'chai-tailwind-lemi';
+
+// Start the runtime observer
+init();</code></pre>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white mt-8"
+            >
+              Simple Visual Demo
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              Write your HTML using the <code>chai-</code> prefixed utility
+              classes. The styles are applied instantly!
+            </p>
+
+            <div
+              class="relative code-block-wrapper text-sm overflow-hidden mb-4"
+            >
+              <button
+                class="copy-btn px-2 py-1 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded text-xs border border-gray-300 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700"
+                onclick="copyCode(this)"
+              >
+                Copy
+              </button>
+              <pre><code class="language-html">&lt;button class="chai-px-6 chai-py-2 chai-bg-purple-600 chai-text-white chai-rounded-lg chai-font-bold chai-hover-bg-purple-700 chai-transition"&gt;
+  Interactive Button
+&lt;/button&gt;</code></pre>
+            </div>
+
+            <div
+              class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900/50 flex justify-center items-center"
+            >
+              <button
+                class="chai-px-6 chai-py-2 chai-bg-purple-600 chai-text-white chai-rounded-lg chai-font-bold chai-hover-bg-purple-700 chai-transition"
+              >
+                Interactive Button
+              </button>
+            </div>
+          </section>
+
+          <section id="core-concepts" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              How It Works
+              <a
+                href="#core-concepts"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind is a Lightning-fast JIT (Just-In-Time) engine running
+              entirely within your browser. There are no build tools, node
+              pipelines, or CLI watchers required.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              The Execution Flow
+            </h3>
+            <div
+              class="p-6 mb-8 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900/50 flex flex-wrap items-center justify-between text-sm font-mono text-center overflow-x-auto gap-4"
+            >
+              <div class="flex flex-col items-center">
+                <span
+                  class="w-12 h-12 flex items-center justify-center bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300 rounded-full mb-2"
+                  ><span class="material-symbols-outlined">code</span></span
+                >
+                <span>DOM</span>
+              </div>
+              <span class="text-gray-400 material-symbols-outlined"
+                >arrow_forward</span
+              >
+              <div class="flex flex-col items-center">
+                <span
+                  class="w-12 h-12 flex items-center justify-center bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300 rounded-full mb-2"
+                  ><span class="material-symbols-outlined">search</span></span
+                >
+                <span
+                  ><code class="text-xs bg-white dark:bg-gray-800 px-1 rounded"
+                    >chai-*</code
+                  ></span
+                >
+              </div>
+              <span class="text-gray-400 material-symbols-outlined"
+                >arrow_forward</span
+              >
+              <div class="flex flex-col items-center">
+                <span
+                  class="w-12 h-12 flex items-center justify-center bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300 rounded-full mb-2"
+                  ><span class="material-symbols-outlined"
+                    >psychology</span
+                  ></span
+                >
+                <span>Parse</span>
+              </div>
+              <span class="text-gray-400 material-symbols-outlined"
+                >arrow_forward</span
+              >
+              <div class="flex flex-col items-center">
+                <span
+                  class="w-12 h-12 flex items-center justify-center bg-orange-100 text-orange-600 dark:bg-orange-900 dark:text-orange-300 rounded-full mb-2"
+                  ><span class="material-symbols-outlined">build</span></span
+                >
+                <span>Generate CSS</span>
+              </div>
+              <span class="text-gray-400 material-symbols-outlined"
+                >arrow_forward</span
+              >
+              <div class="flex flex-col items-center">
+                <span
+                  class="w-12 h-12 flex items-center justify-center bg-pink-100 text-pink-600 dark:bg-pink-900 dark:text-pink-300 rounded-full mb-2"
+                  ><span class="material-symbols-outlined">html</span></span
+                >
+                <span>Inject</span>
+              </div>
+            </div>
+
+            <ul class="space-y-4 text-gray-600 dark:text-gray-400 text-sm">
+              <li
+                class="p-4 rounded-lg border border-gray-100 dark:border-gray-800/60 bg-white dark:bg-transparent"
+              >
+                <strong
+                  class="text-gray-900 dark:text-white block text-base mb-1"
+                  >Runtime CSS Generation</strong
+                >
+                When a <code>chai-</code> prefixed class is discovered on an
+                element, the engine translates the semantic class name (e.g.,
+                <code>chai-bg-blue-500</code>) directly into raw CSS
+                representing that specific utility on the fly.
+              </li>
+              <li
+                class="p-4 rounded-lg border border-gray-100 dark:border-gray-800/60 bg-white dark:bg-transparent"
+              >
+                <strong
+                  class="text-gray-900 dark:text-white block text-base mb-1"
+                  >Class Parsing System</strong
+                >
+                ChaiTailwind features a robust regex and dictionary-based parser
+                to decode variants (like <code>hover-</code> or
+                <code>md-</code>) and match colors or spacing values efficiently
+                against a strict internal token map.
+              </li>
+              <li
+                class="p-4 rounded-lg border border-gray-100 dark:border-gray-800/60 bg-white dark:bg-transparent"
+              >
+                <strong
+                  class="text-gray-900 dark:text-white block text-base mb-1"
+                  >Style Injection & <code>&lt;style&gt;</code> Tag</strong
+                >
+                Instead of modifying inline styles, standard CSS rules are
+                concatenated and automatically injected into a managed
+                <code>&lt;style data-chai-runtime="true"&gt;</code> element
+                located inside the document's <code>&lt;head&gt;</code>.
+              </li>
+              <li
+                class="p-4 rounded-lg border border-gray-100 dark:border-gray-800/60 bg-white dark:bg-transparent"
+              >
+                <strong
+                  class="text-gray-900 dark:text-white block text-base mb-1"
+                  >MutationObserver</strong
+                >
+                Upon initialization, ChaiTailwind attaches a native
+                <code>MutationObserver</code> to the document body. Moving
+                forward, anytime a developer manipulates the DOM (like adding a
+                new element via JavaScript), the engine automatically detects
+                it, parses its classes, and injects any newly required CSS.
+              </li>
+              <li
+                class="p-4 rounded-lg border border-gray-100 dark:border-gray-800/60 bg-white dark:bg-transparent"
+              >
+                <strong
+                  class="text-gray-900 dark:text-white block text-base mb-1"
+                  >Caching System</strong
+                >
+                To ensure optimal performance and avoid duplicate CSS rules,
+                every generated and injected class is tracked in an internal
+                <code>Set</code> cache. A class is only ever processed and
+                injected <em>once</em> per session.
+              </li>
+            </ul>
+          </section>
+
+          <section id="display-position" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Display & Position
+              <a
+                href="#display-position"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+            <p class="mb-8 text-gray-600 dark:text-gray-400">
+              Discover all core display and positioning utilities available in
+              ChaiTailwind. Use these to structure and position elements
+              effortlessly.
+            </p>
+
+            <h3
+              class="text-xl font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-blue-500 pl-3"
+            >
+              Display
+            </h3>
+            <div class="overflow-x-auto mb-8">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Class</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      CSS Output
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Visual Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-flex
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      display: flex;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-flex chai-gap-2 chai-p-2 chai-bg-gray-100 chai-dark-bg-gray-800 chai-rounded"
+                      >
+                        <div
+                          class="chai-w-8 chai-h-8 chai-bg-blue-500 chai-rounded"
+                        ></div>
+                        <div
+                          class="chai-w-8 chai-h-8 chai-bg-blue-400 chai-rounded"
+                        ></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-grid
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      display: grid;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-grid chai-cols-4 chai-gap-2 chai-p-2 chai-bg-gray-100 chai-dark-bg-gray-800 chai-rounded"
+                      >
+                        <div
+                          class="chai-h-4 chai-bg-green-500 chai-rounded"
+                        ></div>
+                        <div
+                          class="chai-h-4 chai-bg-green-400 chai-rounded"
+                        ></div>
+                        <div
+                          class="chai-h-4 chai-bg-green-400 chai-rounded"
+                        ></div>
+                        <div
+                          class="chai-h-4 chai-bg-green-500 chai-rounded"
+                        ></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-block
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      display: block;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-block chai-p-2 chai-bg-purple-100 chai-dark-bg-purple-900/30 chai-text-purple-600 chai-border chai-border-purple-300 chai-rounded chai-text-xs"
+                        >Block Level Element</span
+                      >
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-inline
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      display: inline-block;
+                    </td>
+                    <td class="px-6 py-4 text-xs">
+                      Text with
+                      <span
+                        class="chai-inline chai-bg-yellow-200 chai-dark-bg-yellow-700/50 chai-text-yellow-800 chai-px-1 chai-rounded"
+                        >inline-block styles</span
+                      >
+                      applied.
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-hidden
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      display: none;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-p-2 chai-bg-red-50 chai-dark-bg-red-900/10 chai-text-red-500 chai-border chai-border-red-200 chai-rounded chai-fs-1 chai-flex chai-justify-between"
+                      >
+                        <span>Visible Element</span>
+                        <span class="chai-hidden">Hidden Element</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3
+              class="text-xl font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-rose-500 pl-3"
+            >
+              Position
+            </h3>
+            <div class="overflow-x-auto mb-8">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Class</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      CSS Output
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Visual Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-rose-500">
+                      chai-relative
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      position: relative;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-relative chai-h-12 chai-bg-gray-100 chai-dark-bg-gray-800 chai-rounded chai-flex chai-items-center chai-px-4 chai-text-xs chai-overflow-hidden"
+                      >
+                        Relative Container
+                        <div
+                          class="chai-absolute chai-right-0 chai-top-0 chai-bg-gray-300 chai-dark-bg-gray-600 chai-p-1 chai-rounded-bl-md"
+                        ></div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-rose-500">
+                      chai-absolute
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      position: absolute;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-relative chai-h-12 chai-bg-gray-100 chai-dark-bg-gray-800 chai-rounded chai-overflow-hidden"
+                      >
+                        <div
+                          class="chai-absolute chai-right-0 chai-top-0 chai-bg-pink-500 chai-text-white chai-px-2 chai-py-1 chai-text-[10px] chai-rounded-bl-lg"
+                        >
+                          Absolute
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-rose-500">
+                      chai-fixed
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      position: fixed;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-p-2 chai-bg-amber-100 chai-dark-bg-amber-900/30 chai-border chai-border-amber-300 chai-rounded chai-text-xs"
+                      >
+                        <span
+                          class="font-semibold text-amber-700 dark:text-amber-400"
+                          >Fixed element (rendered inline here for
+                          preview)</span
+                        >
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="position-offsets" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Position Offsets
+              <a
+                href="#position-offsets"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind includes specific utilities for pinning and nudging
+              elements that have been taken out of standard document flow (using
+              relative, absolute, or fixed positioning).
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Properties Covered
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-1 mb-6 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <strong>Top:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-top-{0-300}</code
+                >
+              </li>
+              <li>
+                <strong>Right:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-right-{0-300}</code
+                >
+              </li>
+              <li>
+                <strong>Bottom:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-bottom-{0-300}</code
+                >
+              </li>
+              <li>
+                <strong>Left:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-left-{0-300}</code
+                >
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white mt-8"
+            >
+              How Offsets Work
+            </h3>
+            <p class="mb-6 text-gray-600 dark:text-gray-400 text-sm">
+              These utilities map against the exact same proportional scale used
+              for spacing and sizing. The numeric index is multiplied by exactly
+              <code>4px</code>. For example, applying
+              <code>chai-left-10</code> compiles to <code>left: 40px;</code> in
+              CSS. Using these utilities perfectly positions elements marked as
+              <code>absolute</code> or <code>fixed</code> relative to their
+              nearest positioned ancestor container.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white"
+            >
+              Examples
+            </h3>
+
+            <div class="space-y-6">
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
+              >
+                <div
+                  class="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 px-4 py-2 font-mono text-sm flex justify-between items-center"
+                >
+                  <span class="text-rose-600 dark:text-rose-400 font-bold"
+                    >Offset Positioning Demo</span
+                  >
+                </div>
+                <div
+                  class="p-6 bg-gray-100 dark:bg-gray-950 flex justify-center py-12"
+                >
+                  <div
+                    class="chai-relative chai-w-64 chai-h-50 chai-bg-white chai-dark-bg-gray-800 chai-rounded-lg shadow-inner border border-gray-300 dark:border-gray-700 chai-flex chai-items-center chai-justify-center"
+                  >
+                    <span
+                      class="text-gray-400 font-mono text-xs text-center border-dashed border-2 border-gray-200 dark:border-gray-700 chai-p-4 chai-rounded-lg"
+                      >Relative<br />Parent</span
+                    >
+
+                    <div
+                      class="chai-absolute chai-top-4 chai-left-4 chai-bg-pink-500 chai-text-white chai-text-[10px] chai-rounded chai-px-2 chai-py-1 font-mono font-bold shadow"
+                    >
+                      chai-top-4 (16px)<br />chai-left-4 (16px)
+                    </div>
+
+                    <div
+                      class="chai-absolute chai-bottom-8 chai-right-8 chai-bg-purple-500 chai-text-white chai-text-[10px] chai-rounded chai-px-2 chai-py-1 font-mono font-bold shadow text-right"
+                    >
+                      chai-bottom-8 (32px)<br />chai-right-8 (32px)
+                    </div>
+
+                    <div
+                      class="chai-absolute chai-top-0 chai-right-0 chai-bg-blue-500 chai-text-white chai-text-[10px] chai-rounded chai-px-2 chai-py-1 font-mono font-bold shadow chai-rounded-tr-lg"
+                    >
+                      chai-top-0<br />chai-right-0
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="flex-alignment" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Flex & Alignment
+              <a
+                href="#flex-alignment"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind makes building flexible layouts extremely seamless
+              using Flexbox utilities.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              How Flex Works
+            </h3>
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              By applying the
+              <code
+                class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                >chai-flex</code
+              >
+              utility to a container, it generates a flexible container block
+              context. Once established, you can use directional arrows (like
+              <code
+                class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                >chai-flex-col</code
+              >) or alignment helpers (like
+              <code
+                class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                >chai-justify-between</code
+              >) to predictably configure and perfectly position the child
+              elements along either the primary or cross axis.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white mt-8"
+            >
+              How Alignment Utilities Affect Layout
+            </h3>
+            <p class="mb-8 text-gray-600 dark:text-gray-400">
+              Alignment utilities instruct the browser on how to distribute free
+              space within the flex container. For instance,
+              <code
+                class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                >chai-justify-between</code
+              >
+              pushes the first child to the start, the last child to the extreme
+              end, and evenly distributes remaining items along the main axis.
+              Using
+              <code
+                class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                >chai-items-center</code
+              >
+              aligns the items perfectly centralized along the cross-axis,
+              ensuring they are vertically centered if it's a standard
+              horizontal row setup.
+            </p>
+
+            <h3
+              class="text-xl font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-indigo-500 pl-3"
+            >
+              Flex Utilities
+            </h3>
+            <div class="overflow-x-auto mb-8">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Class</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      CSS Output
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Visual Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-indigo-500">
+                      chai-flex-col
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      flex-direction: column;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-flex chai-flex-col chai-gap-1 chai-bg-gray-50 chai-dark-bg-gray-800 chai-p-2 chai-rounded border border-gray-200 dark:border-gray-700"
+                      >
+                        <div
+                          class="chai-h-4 chai-bg-indigo-300 chai-rounded chai-text-[10px] chai-flex chai-items-center chai-justify-center font-mono font-bold"
+                        >
+                          1
+                        </div>
+                        <div
+                          class="chai-h-4 chai-bg-indigo-400 chai-rounded chai-text-[10px] chai-flex chai-items-center chai-justify-center font-mono font-bold text-white"
+                        >
+                          2
+                        </div>
+                        <div
+                          class="chai-h-4 chai-bg-indigo-500 chai-rounded chai-text-[10px] chai-flex chai-items-center chai-justify-center font-mono font-bold text-white"
+                        >
+                          3
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-indigo-500">
+                      chai-justify-between
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      justify-content: space-between;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-flex chai-justify-between chai-bg-gray-50 chai-dark-bg-gray-800 chai-p-2 chai-rounded border border-gray-200 dark:border-gray-700"
+                      >
+                        <div
+                          class="chai-px-2 chai-h-6 chai-bg-indigo-500 chai-rounded chai-flex chai-items-center chai-justify-center text-white text-[10px] font-mono"
+                        >
+                          Start
+                        </div>
+                        <div
+                          class="chai-px-2 chai-h-6 chai-bg-indigo-500 chai-rounded chai-flex chai-items-center chai-justify-center text-white text-[10px] font-mono"
+                        >
+                          End
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-indigo-500">
+                      chai-items-center
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      align-items: center;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="chai-flex chai-justify-center chai-items-center chai-gap-2 chai-h-16 chai-bg-gray-50 chai-dark-bg-gray-800 chai-px-2 chai-rounded border border-gray-200 dark:border-gray-700"
+                      >
+                        <div
+                          class="chai-w-6 chai-h-6 chai-bg-indigo-400 chai-rounded-full"
+                        ></div>
+                        <div
+                          class="chai-w-16 chai-h-3 chai-bg-indigo-500 chai-rounded"
+                        ></div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="spacing" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Spacing
+              <a
+                href="#spacing"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind uses a highly predictable proportional spacing scale
+              for all padding and margin utilities. The scale runs steadily from
+              <strong><code>0</code> to <code>300</code></strong
+              >.
+            </p>
+
+            <div
+              class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 text-sm text-blue-800 dark:text-blue-200 rounded-r-lg mb-8"
+            >
+              <strong>Scale Calculation:</strong> Multiply the utility index by
+              <code>4px</code>. <br />
+              <code>Scale Value = Index × 4px</code> (e.g., <code>10</code> =
+              <code>40px</code>, <code>20</code> = <code>80px</code>).
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white"
+            >
+              Properties Covered
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-2 text-gray-600 dark:text-gray-400 mb-8 text-sm"
+            >
+              <li>
+                <strong
+                  class="font-sans text-gray-800 dark:text-gray-200 block mb-1"
+                  >Padding:</strong
+                >
+                <code
+                  class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                  >chai-p-{0-300}</code
+                >,
+                <code
+                  class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                  >chai-px-{0-300}</code
+                >,
+                <code
+                  class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                  >chai-py-{0-300}</code
+                >
+              </li>
+              <li>
+                <strong
+                  class="font-sans text-gray-800 dark:text-gray-200 block mb-1 mt-3"
+                  >Margin:</strong
+                >
+                <code
+                  class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                  >chai-m-{0-300}</code
+                >,
+                <code
+                  class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                  >chai-mx-{0-300}</code
+                >,
+                <code
+                  class="text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-blue-500 font-mono"
+                  >chai-my-{0-300}</code
+                >
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white"
+            >
+              Examples & Visual Demos
+            </h3>
+
+            <div class="space-y-6">
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
+              >
+                <div
+                  class="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 px-4 py-2 font-mono text-sm flex justify-between"
+                >
+                  <span class="text-blue-600 dark:text-blue-400 font-bold"
+                    >chai-p-20</span
+                  >
+                  <span class="text-gray-500 text-xs">padding: 80px;</span>
+                </div>
+                <div
+                  class="p-6 bg-gray-100 dark:bg-gray-950 flex justify-center items-center"
+                >
+                  <div
+                    class="chai-bg-blue-200 dark:bg-blue-900/40 chai-relative chai-rounded border border-blue-300 dark:border-blue-700"
+                  >
+                    <div
+                      class="chai-bg-blue-600 chai-p-20 chai-text-white chai-relative chai-z-10 chai-flex chai-items-center chai-justify-center chai-text-xs font-mono chai-rounded"
+                    >
+                      Content Area
+                    </div>
+                    <div
+                      class="chai-absolute chai-inset-0 chai-flex chai-items-center chai-justify-center chai-text-blue-800 dark:text-blue-200 font-bold text-xs pointer-events-none"
+                    >
+                      padding (80px)
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
+              >
+                <div
+                  class="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 px-4 py-2 font-mono text-sm flex justify-between"
+                >
+                  <span class="text-green-600 dark:text-green-400 font-bold"
+                    >chai-mx-10</span
+                  >
+                  <span class="text-gray-500 text-xs"
+                    >margin-left: 40px; margin-right: 40px;</span
+                  >
+                </div>
+                <div
+                  class="p-6 bg-gray-100 dark:bg-gray-950 flex justify-center items-center py-10"
+                >
+                  <div
+                    class="chai-bg-green-200 dark:bg-green-900/40 chai-flex chai-w-full max-w-sm chai-rounded chai-relative chai-overflow-hidden border border-green-300 dark:border-green-700"
+                  >
+                    <div
+                      class="chai-bg-green-600 chai-mx-10 chai-py-4 chai-text-white chai-w-full chai-text-center chai-text-xs font-mono chai-rounded relative z-10 shadow"
+                    >
+                      Element
+                    </div>
+                    <div
+                      class="chai-absolute chai-left-2 chai-top-1/2 -translate-y-1/2 chai-text-green-800 dark:text-green-400 text-[10px] font-bold"
+                    >
+                      mx (40px)
+                    </div>
+                    <div
+                      class="chai-absolute chai-right-2 chai-top-1/2 -translate-y-1/2 chai-text-green-800 dark:text-green-400 text-[10px] font-bold"
+                    >
+                      mx (40px)
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="sizing" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Sizing
+              <a
+                href="#sizing"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind includes precise utilities directly focused on
+              setting absolute widths and heights.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Full Sizing
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              Force an element to span 100% of its parent container's width or
+              height.
+            </p>
+
+            <div class="overflow-x-auto mb-8">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Class</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      CSS Output
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Visual Preview</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-w-full
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      width: 100%;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="w-full bg-gray-100 dark:bg-gray-800 rounded p-1 border border-gray-200 dark:border-gray-700"
+                      >
+                        <div
+                          class="chai-w-full chai-bg-blue-500 chai-text-white chai-text-[10px] chai-rounded chai-py-1 chai-text-center font-mono font-bold"
+                        >
+                          100%
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-h-full
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      height: 100%;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="h-16 bg-gray-100 dark:bg-gray-800 rounded p-1 flex border border-gray-200 dark:border-gray-700"
+                      >
+                        <div
+                          class="chai-h-full chai-w-16 chai-bg-blue-500 chai-text-white chai-text-[10px] chai-rounded chai-flex chai-items-center chai-justify-center font-mono font-bold text-center leading-tight"
+                        >
+                          100%<br />height
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white mt-8"
+            >
+              Dynamic Scale
+            </h3>
+            <div
+              class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 text-sm text-blue-800 dark:text-blue-200 rounded-r-lg mb-6"
+            >
+              <strong>Scale Calculation:</strong> The scale runs dynamically
+              from <code>0</code> to <code>300</code>.<br />
+              <code>Scale Value × 4px = Final Size</code>
+            </div>
+
+            <ul
+              class="list-disc pl-6 space-y-2 mb-8 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <strong>Widths:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-800 dark:text-gray-200"
+                  >chai-w-{0-300}</code
+                >
+              </li>
+              <li>
+                <strong>Heights:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded text-gray-800 dark:text-gray-200"
+                  >chai-h-{0-300}</code
+                >
+              </li>
+            </ul>
+
+            <div class="space-y-6">
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
+              >
+                <div
+                  class="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 px-4 py-2 font-mono text-sm flex justify-between"
+                >
+                  <span class="text-blue-600 dark:text-blue-400 font-bold"
+                    >chai-w-50</span
+                  >
+                  <span class="text-gray-500 text-xs">width: 200px;</span>
+                </div>
+                <div
+                  class="p-6 bg-gray-100 dark:bg-gray-950 flex justify-center py-8"
+                >
+                  <div
+                    class="chai-w-50 chai-h-16 chai-bg-gradient-to-r from-blue-500 to-blue-600 chai-rounded-lg shadow flex items-center justify-center text-white font-mono text-xs font-bold ring-1 ring-blue-700/50"
+                  >
+                    50 × 4px = 200px
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden bg-white dark:bg-gray-900"
+              >
+                <div
+                  class="border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800 px-4 py-2 font-mono text-sm flex justify-between"
+                >
+                  <span class="text-green-600 dark:text-green-400 font-bold"
+                    >chai-h-100</span
+                  >
+                  <span class="text-gray-500 text-xs">height: 400px;</span>
+                </div>
+                <div
+                  class="p-6 bg-gray-100 dark:bg-gray-950 flex justify-center py-8"
+                >
+                  <div
+                    class="chai-h-100 chai-w-40 chai-bg-gradient-to-b from-green-500 to-green-600 chai-rounded-lg shadow flex items-center justify-center text-white font-mono text-xs font-bold leading-relaxed whitespace-pre text-center ring-1 ring-green-700/50"
+                  >
+                    100 × 4px = 400px
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="colors" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Colors
+              <a
+                href="#colors"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind includes a predefined set of beautiful colors. Apply
+              them to backgrounds, text, and borders effortlessly.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Supported Colors & Shades
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-1 mb-6 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <strong>Colors:</strong> <code>gray</code>, <code>red</code>,
+                <code>green</code>, <code>blue</code>, <code>indigo</code>,
+                <code>purple</code>, <code>pink</code>
+              </li>
+              <li>
+                <strong>Shades:</strong> Ranges from <code>50</code> (extremely
+                light) to <code>900</code> (extremely dark). Note that
+                <code>gray</code> also includes a <code>950</code> shade.
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Color Utilities
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-2 mb-8 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <strong>Backgrounds:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-bg-{color}-{shade}</code
+                >
+              </li>
+              <li>
+                <strong>Text:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-text-{color}-{shade}</code
+                >
+              </li>
+              <li>
+                <strong>Borders:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-border-{color}-{shade}</code
+                >
+              </li>
+              <li>
+                <strong>Core Colors:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-bg-white</code
+                >,
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-bg-black</code
+                >,
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-bg-transparent</code
+                >
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-10"
+            >
+              Examples Showcase
+            </h3>
+
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
+            >
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+              >
+                <p class="text-xs font-mono text-gray-500 mb-2">
+                  chai-bg-blue-500
+                </p>
+                <div
+                  class="chai-h-16 chai-w-full chai-bg-blue-500 chai-rounded-lg shadow flex items-center justify-center chai-text-white font-bold text-sm"
+                >
+                  Background Blue
+                </div>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+              >
+                <p class="text-xs font-mono text-gray-500 mb-2">
+                  chai-text-red-600
+                </p>
+                <div
+                  class="chai-h-16 chai-w-full chai-bg-red-50 chai-rounded-lg shadow-sm flex items-center justify-center chai-text-red-600 font-bold text-sm"
+                >
+                  Danger Text
+                </div>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+              >
+                <p class="text-xs font-mono text-gray-500 mb-2">
+                  chai-border-purple-500
+                </p>
+                <div
+                  class="chai-h-16 chai-w-full chai-bg-white dark:bg-gray-950 chai-border-2 chai-border-purple-500 chai-rounded-lg shadow-sm flex items-center justify-center chai-text-purple-600 font-bold text-sm"
+                >
+                  Purple Border
+                </div>
+              </div>
+
+              <div
+                class="col-span-1 md:col-span-2 lg:col-span-3 p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+              >
+                <p class="text-xs font-mono text-gray-500 mb-2">
+                  Core Base Backgrounds
+                </p>
+                <div class="chai-flex chai-gap-4">
+                  <div
+                    class="chai-flex-1 chai-h-12 chai-bg-black chai-rounded-lg shadow-sm flex items-center justify-center chai-text-white text-[10px] md:text-xs font-mono font-bold"
+                  >
+                    chai-bg-black
+                  </div>
+                  <div
+                    class="chai-flex-1 chai-h-12 chai-bg-white chai-border border-gray-200 chai-rounded-lg shadow-sm flex items-center justify-center chai-text-black text-[10px] md:text-xs font-mono font-bold"
+                  >
+                    chai-bg-white
+                  </div>
+                  <div
+                    class="chai-flex-1 chai-h-12 chai-bg-transparent chai-border-2 border-dashed border-gray-400 chai-rounded-lg shadow-sm flex items-center justify-center text-gray-500 text-[10px] md:text-xs font-mono font-bold"
+                  >
+                    chai-bg-transparent
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-10"
+            >
+              Color Palette Grid
+            </h3>
+            <div
+              class="space-y-6 bg-white dark:bg-gray-900 p-6 rounded-xl border border-gray-200 dark:border-gray-800"
+            >
+              <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+                <div
+                  class="chai-bg-gray-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  gray-500
+                </div>
+                <div
+                  class="chai-bg-red-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  red-500
+                </div>
+                <div
+                  class="chai-bg-green-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  green-500
+                </div>
+                <div
+                  class="chai-bg-blue-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  blue-500
+                </div>
+                <div
+                  class="chai-bg-indigo-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  indigo-500
+                </div>
+                <div
+                  class="chai-bg-purple-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  purple-500
+                </div>
+                <div
+                  class="chai-bg-pink-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white chai-text-xs font-mono font-bold shadow-sm"
+                >
+                  pink-500
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-gray-100 dark:border-gray-800">
+                <p
+                  class="text-xs font-bold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3"
+                >
+                  Shade Scale Validation (Gray with 950)
+                </p>
+                <div
+                  class="chai-flex chai-w-full chai-h-12 chai-rounded-lg chai-overflow-hidden shadow-sm"
+                >
+                  <div
+                    class="chai-bg-gray-50 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] text-gray-500"
+                  >
+                    50
+                  </div>
+                  <div
+                    class="chai-bg-gray-100 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] text-gray-600"
+                  >
+                    100
+                  </div>
+                  <div
+                    class="chai-bg-gray-200 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] text-gray-700"
+                  >
+                    200
+                  </div>
+                  <div
+                    class="chai-bg-gray-300 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] text-gray-800"
+                  >
+                    300
+                  </div>
+                  <div
+                    class="chai-bg-gray-400 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] text-gray-900"
+                  >
+                    400
+                  </div>
+                  <div
+                    class="chai-bg-gray-500 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] chai-text-white"
+                  >
+                    500
+                  </div>
+                  <div
+                    class="chai-bg-gray-600 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] chai-text-white"
+                  >
+                    600
+                  </div>
+                  <div
+                    class="chai-bg-gray-700 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] chai-text-white"
+                  >
+                    700
+                  </div>
+                  <div
+                    class="chai-bg-gray-800 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] chai-text-white"
+                  >
+                    800
+                  </div>
+                  <div
+                    class="chai-bg-gray-900 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] chai-text-white"
+                  >
+                    900
+                  </div>
+                  <div
+                    class="chai-bg-gray-950 chai-w-full chai-h-full chai-flex chai-items-center chai-justify-center text-[10px] chai-text-white"
+                  >
+                    950
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="color-opacity" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Color Opacity
+              <a
+                href="#color-opacity"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind natively supports controlling the alpha channel
+              (opacity) of any color directly within the utility class name.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Syntax & Conversion
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              To apply an opacity modifier, append a forward slash
+              <code>/</code> followed by a percentage value (from
+              <code>0</code> to <code>100</code>) to any color class (e.g.,
+              <code>chai-bg-blue-500/50</code>).
+            </p>
+            <div
+              class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 text-sm text-blue-800 dark:text-blue-200 rounded-r-lg mb-8"
+            >
+              <strong>Under the Hood:</strong> The engine automatically detects
+              this fractional modifier, checks its internal token dictionary map
+              for the corresponding mapped color hex code, effortlessly converts
+              that flat <strong>hex code to RGBA</strong> on the fly, and
+              injects the requested percentage as the alpha channel value.
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-10"
+            >
+              Examples
+            </h3>
+            <div class="space-y-6">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-900 dark:bg-gray-950 rounded-lg"
+              >
+                <p
+                  class="text-xs font-mono text-gray-400 mb-4 tracking-wider uppercase"
+                >
+                  Background Highlights (chai-bg-blue-500/*)
+                </p>
+                <div
+                  class="chai-flex chai-gap-4 chai-flex-col sm:chai-flex-row"
+                >
+                  <div
+                    class="chai-bg-blue-500/10 chai-h-16 chai-flex-1 chai-rounded-lg shadow flex items-center justify-center chai-text-blue-400 font-bold text-xs font-mono chai-border chai-border-blue-500/20"
+                  >
+                    /10
+                  </div>
+                  <div
+                    class="chai-bg-blue-500/30 chai-h-16 chai-flex-1 chai-rounded-lg shadow flex items-center justify-center chai-text-blue-300 font-bold text-xs font-mono chai-border chai-border-blue-500/20"
+                  >
+                    /30
+                  </div>
+                  <div
+                    class="chai-bg-blue-500/50 chai-h-16 chai-flex-1 chai-rounded-lg shadow flex items-center justify-center chai-text-blue-200 font-bold text-xs font-mono chai-border chai-border-blue-500/30"
+                  >
+                    /50
+                  </div>
+                  <div
+                    class="chai-bg-blue-500/70 chai-h-16 chai-flex-1 chai-rounded-lg shadow flex items-center justify-center chai-text-blue-100 font-bold text-xs font-mono chai-border chai-border-blue-500/40"
+                  >
+                    /70
+                  </div>
+                  <div
+                    class="chai-bg-blue-500 chai-h-16 chai-flex-1 chai-rounded-lg shadow flex items-center justify-center chai-text-white font-bold text-xs font-mono"
+                  >
+                    100%
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 rounded-lg"
+              >
+                <p
+                  class="text-xs font-mono text-gray-500 dark:text-gray-400 mb-4 tracking-wider uppercase"
+                >
+                  Alpha Text Reading (chai-text-black/*)
+                </p>
+                <div
+                  class="chai-flex chai-gap-4 chai-flex-col sm:chai-flex-row chai-items-center chai-justify-center"
+                >
+                  <div
+                    class="chai-py-4 chai-flex-1 chai-flex items-center justify-center chai-text-black/20 dark:chai-text-white/20 font-bold text-xl"
+                  >
+                    black/20
+                  </div>
+                  <div
+                    class="chai-py-4 chai-flex-1 chai-flex items-center justify-center chai-text-black/50 dark:chai-text-white/50 font-bold text-xl"
+                  >
+                    black/50
+                  </div>
+                  <div
+                    class="chai-py-4 chai-flex-1 chai-flex items-center justify-center chai-text-black/80 dark:chai-text-white/80 font-bold text-xl"
+                  >
+                    black/80
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="typography" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Typography
+              <a
+                href="#typography"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+            <p class="mb-8 text-gray-600 dark:text-gray-400">
+              ChaiTailwind features a streamlined typographic scale and
+              effortless alignment tools for text.
+            </p>
+
+            <h3
+              class="text-xl font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-blue-500 pl-3"
+            >
+              Font Sizes
+            </h3>
+            <p class="mb-6 text-gray-600 dark:text-gray-400 text-sm">
+              Use the <code>chai-fs-*</code> utilities to scale font sizes
+              proportionately. Here is the font size scale comparison:
+            </p>
+
+            <div class="overflow-x-auto mb-10">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Class</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      CSS Output
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Visual Preview</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-10
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 3rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-10 text-gray-900 dark:text-white leading-none block"
+                        >Hero Text</span
+                      >
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-6
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 1.5rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-6 text-gray-900 dark:text-white block"
+                        >Heading Text</span
+                      >
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-5
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 1.25rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-5 text-gray-900 dark:text-white block"
+                        >Large Text</span
+                      >
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-4
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 1.125rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-4 text-gray-900 dark:text-white block"
+                        >Medium Text</span
+                      >
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-3
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 1rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-3 text-gray-900 dark:text-white block"
+                        >Base Text</span
+                      >
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-2
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 0.875rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-2 text-gray-900 dark:text-white block"
+                        >Small Text</span
+                      >
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      chai-fs-1
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-size: 0.75rem;
+                    </td>
+                    <td class="px-6 py-4">
+                      <span
+                        class="chai-fs-1 text-gray-900 dark:text-white block"
+                        >Extra Small Text</span
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3
+              class="text-xl font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-indigo-500 pl-3"
+            >
+              Weight & Alignment
+            </h3>
+            <p class="mb-6 text-gray-600 dark:text-gray-400 text-sm">
+              Apply text alignment and font weight adjustments to your text
+              elements.
+            </p>
+
+            <div class="overflow-x-auto mb-8">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Class</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      CSS Output
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Visual Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-indigo-500">
+                      chai-font-bold
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      font-weight: 700;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="p-4 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded"
+                      >
+                        <p
+                          class="chai-font-bold text-gray-800 dark:text-gray-200"
+                        >
+                          The quick brown fox jumps over the lazy dog.
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-indigo-500">
+                      chai-text-center
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      text-align: center;
+                    </td>
+                    <td class="px-6 py-4">
+                      <div
+                        class="p-4 border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 rounded"
+                      >
+                        <p
+                          class="chai-text-center text-gray-800 dark:text-gray-200"
+                        >
+                          The quick brown fox jumps over the lazy dog.
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="border-radius" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Border Radius
+              <a
+                href="#border-radius"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind provides simple and effective utilities for rounding
+              the corners of your elements.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Supported Utilities
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-2 mb-8 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <strong>Large Radius:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-rounded-lg</code
+                >
+                compiles to <code>border-radius: 12px;</code>.
+              </li>
+              <li>
+                <strong>Full Radius:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-rounded-full</code
+                >
+                compiles to <code>border-radius: 9999px;</code>.
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-8 text-gray-900 dark:text-white"
+            >
+              Visual Examples
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center"
+              >
+                <p class="text-xs font-mono text-gray-500 mb-6 text-center">
+                  chai-rounded-lg
+                </p>
+                <div
+                  class="chai-w-32 chai-h-32 chai-bg-purple-500 chai-rounded-lg shadow flex items-center justify-center chai-text-white font-mono text-sm font-bold"
+                >
+                  12px
+                </div>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center"
+              >
+                <p class="text-xs font-mono text-gray-500 mb-6 text-center">
+                  chai-rounded-full
+                </p>
+                <div
+                  class="chai-w-32 chai-h-32 chai-bg-pink-500 chai-rounded-full shadow flex items-center justify-center chai-text-white font-mono text-sm font-bold text-center"
+                >
+                  9999px<br />(Circle)
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="grid-system" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Grid System
+              <a
+                href="#grid-system"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind provides a powerful foundational 12-column CSS Grid
+              system for building rigid and predictable layouts.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Properties Covered
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-1 mb-6 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <strong>Columns:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-cols-1</code
+                >
+                to
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-cols-12</code
+                >
+              </li>
+              <li>
+                <strong>Gaps:</strong>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-gap-{0-300}</code
+                >
+              </li>
+            </ul>
+
+            <div
+              class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 text-sm text-blue-800 dark:text-blue-200 rounded-r-lg mb-8"
+            >
+              <strong>How it works:</strong> <br /><br />
+              ▪ <code>chai-cols-{n}</code> compiles to
+              <code>grid-template-columns: repeat({n}, minmax(0, 1fr));</code
+              >.<br /><br />
+              ▪ <code>chai-gap-{n}</code> sets the gutter size between rows and
+              columns based strictly on the proportional scale (<code
+                >Index × 4px</code
+              >).
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-8 text-gray-900 dark:text-white"
+            >
+              Layout Examples
+            </h3>
+
+            <div class="space-y-8">
+              <div>
+                <p class="text-sm font-mono text-gray-500 mb-2">
+                  2 Column Layout:
+                  <code
+                    class="text-indigo-500 bg-indigo-50 dark:bg-indigo-900/30 px-1 rounded"
+                    >chai-cols-2 chai-gap-4</code
+                  >
+                </p>
+                <div
+                  class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+                >
+                  <div class="chai-grid chai-cols-2 chai-gap-4">
+                    <div
+                      class="chai-bg-indigo-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      1
+                    </div>
+                    <div
+                      class="chai-bg-indigo-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      2
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-sm font-mono text-gray-500 mb-2">
+                  3 Column Layout:
+                  <code
+                    class="text-purple-500 bg-purple-50 dark:bg-purple-900/30 px-1 rounded"
+                    >chai-cols-3 chai-gap-4</code
+                  >
+                </p>
+                <div
+                  class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+                >
+                  <div class="chai-grid chai-cols-3 chai-gap-4">
+                    <div
+                      class="chai-bg-purple-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      1
+                    </div>
+                    <div
+                      class="chai-bg-purple-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      2
+                    </div>
+                    <div
+                      class="chai-bg-purple-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      3
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p class="text-sm font-mono text-gray-500 mb-2">
+                  4 Column Layout:
+                  <code
+                    class="text-blue-500 bg-blue-50 dark:bg-blue-900/30 px-1 rounded"
+                    >chai-cols-4 chai-gap-4</code
+                  >
+                </p>
+                <div
+                  class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg"
+                >
+                  <div class="chai-grid chai-cols-4 chai-gap-4">
+                    <div
+                      class="chai-bg-blue-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      1
+                    </div>
+                    <div
+                      class="chai-bg-blue-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      2
+                    </div>
+                    <div
+                      class="chai-bg-blue-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      3
+                    </div>
+                    <div
+                      class="chai-bg-blue-500 chai-h-12 chai-rounded-lg chai-flex chai-items-center chai-justify-center chai-text-white font-mono text-sm font-bold shadow"
+                    >
+                      4
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="transitions" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Transitions
+              <a
+                href="#transitions"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind includes a straightforward utility for applying
+              smooth transitions to elements, particularly useful for hover and
+              focus states.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Properties
+            </h3>
+            <ul
+              class="list-disc pl-6 space-y-1 mb-6 text-gray-600 dark:text-gray-400 text-sm"
+            >
+              <li>
+                <code
+                  class="font-mono text-xs bg-gray-100 dark:bg-gray-800 px-1 rounded"
+                  >chai-transition</code
+                >
+                compiles strictly to <code>transition: all 0.3s ease;</code>.
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-8 text-gray-900 dark:text-white"
+            >
+              Interactive Example
+            </h3>
+
+            <div
+              class="p-8 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-center"
+            >
+              <p class="text-sm font-mono text-gray-500 mb-6 text-center">
+                Hover the button below
+              </p>
+              <button class="demo-hover-btn chai-transition shadow-md">
+                Hover Me
+              </button>
+            </div>
+          </section>
+
+          <section id="animations" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Animations
+              <a
+                href="#animations"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind ships with powerful built-in CSS keyframes
+              categorized for standard interactions. Add the
+              <code>chai-animate-*</code> utility to instantly bring elements to
+              life.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-8 text-gray-900 dark:text-white border-l-4 border-green-500 pl-3"
+            >
+              Entry Animations
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              Designed to gracefully transition elements into the viewport or
+              component tree.
+            </p>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+            >
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-fade
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Smooth opacity transition from 0 to 1.
+                </p>
+                <div
+                  class="chai-bg-green-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-fade mb-6 flex items-center justify-center text-white font-bold text-xs font-mono"
+                >
+                  fade
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-fade')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-slide-up
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Translates upward on the Y-axis while fading in.
+                </p>
+                <div
+                  class="chai-bg-green-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-slide-up mb-6 flex items-center justify-center text-white font-bold text-[10px] text-center font-mono leading-tight"
+                >
+                  slide<br />up
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-slide-up')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-slide-down
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Translates downward on the Y-axis while fading in.
+                </p>
+                <div
+                  class="chai-bg-green-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-slide-down mb-6 flex items-center justify-center text-white font-bold text-[10px] text-center font-mono leading-tight"
+                >
+                  slide<br />down
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-slide-down')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-slide-left
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Translates horizontally to the left while fading in.
+                </p>
+                <div
+                  class="chai-bg-green-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-slide-left mb-6 flex items-center justify-center text-white font-bold text-[10px] text-center font-mono leading-tight"
+                >
+                  slide<br />left
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-slide-left')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-slide-right
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Translates horizontally to the right while fading in.
+                </p>
+                <div
+                  class="chai-bg-green-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-slide-right mb-6 flex items-center justify-center text-white font-bold text-[10px] text-center font-mono leading-tight"
+                >
+                  slide<br />right
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-slide-right')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-12 text-gray-900 dark:text-white border-l-4 border-purple-500 pl-3"
+            >
+              Transform Animations
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              Modifiers focusing on scale and rotation manipulation.
+            </p>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8"
+            >
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-scale
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Pops the element into view by scaling up from 0.
+                </p>
+                <div
+                  class="chai-bg-purple-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-scale mb-6 flex items-center justify-center text-white font-bold text-xs font-mono"
+                >
+                  scale
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-scale')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-scale-out
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Scales down out of view back to 0.
+                </p>
+                <div
+                  class="chai-bg-purple-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-scale-out mb-6 flex items-center justify-center text-white font-bold text-xs font-mono text-center"
+                >
+                  scale<br />out
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-scale-out')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-rotate
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Spins seamlessly 360 degrees infinitely.
+                </p>
+                <div
+                  class="chai-bg-purple-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-rotate mb-6 flex items-center justify-center text-white font-bold text-xs font-mono text-center"
+                >
+                  rotate
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-rotate')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-zoom-in
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Starts small and scales up to 1 over time.
+                </p>
+                <div
+                  class="chai-bg-purple-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-zoom-in mb-6 flex items-center justify-center text-white font-bold text-xs font-mono text-center"
+                >
+                  zoom<br />in
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-zoom-in')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-zoom-out
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Starts at native size and scales further out.
+                </p>
+                <div
+                  class="chai-bg-purple-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-zoom-out mb-6 flex items-center justify-center text-white font-bold text-xs font-mono text-center"
+                >
+                  zoom<br />out
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-zoom-out')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-12 text-gray-900 dark:text-white border-l-4 border-indigo-500 pl-3"
+            >
+              3D Perspectives
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              Create 3D flip card visual effects natively.
+            </p>
+            <div
+              class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 w-full max-w-2xl"
+            >
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-flip-x
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Rotates via 3D perspective along the X axis.
+                </p>
+                <div
+                  class="chai-bg-indigo-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-flip-x mb-6 flex items-center justify-center text-white font-bold text-[10px] font-mono text-center p-1"
+                >
+                  flip x
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-flip-x')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-2"
+                >
+                  chai-animate-flip-y
+                </p>
+                <p class="text-xs text-gray-500 text-center mb-4">
+                  Rotates via 3D perspective along the Y axis.
+                </p>
+                <div
+                  class="chai-bg-indigo-500 chai-w-16 chai-h-16 chai-rounded-lg shadow-md chai-animate-flip-y mb-6 flex items-center justify-center text-white font-bold text-[10px] font-mono text-center p-1"
+                >
+                  flip y
+                </div>
+                <button
+                  onclick="replayAnim(this, 'animate-flip-y')"
+                  class="text-xs w-full py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-12 text-gray-900 dark:text-white border-l-4 border-rose-500 pl-3"
+            >
+              Attention Seekers
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              Designed to immediately draw user focus to a specific element on
+              the page.
+            </p>
+            <div
+              class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8"
+            >
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[200px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase mb-2"
+                >
+                  chai-animate-swing
+                </p>
+                <p class="text-[10px] text-gray-500 text-center mb-3">
+                  Swings from an upper origin.
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-swing mb-6 flex shrink-0"
+                ></div>
+                <button
+                  onclick="replayAnim(this, 'animate-swing')"
+                  class="text-xs w-full py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[200px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase mb-2"
+                >
+                  chai-animate-pulse
+                </p>
+                <p class="text-[10px] text-gray-500 text-center mb-3">
+                  Expands scaling up rhythmically.
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-pulse mb-6 flex shrink-0"
+                ></div>
+                <button
+                  onclick="replayAnim(this, 'animate-pulse')"
+                  class="text-xs w-full py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[200px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase mb-2"
+                >
+                  chai-animate-bounce
+                </p>
+                <p class="text-[10px] text-gray-500 text-center mb-3">
+                  Bounces vertically.
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-bounce mb-6 flex shrink-0"
+                ></div>
+                <button
+                  onclick="replayAnim(this, 'animate-bounce')"
+                  class="text-xs w-full py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[200px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase mb-2"
+                >
+                  chai-animate-heartbeat
+                </p>
+                <p class="text-[10px] text-gray-500 text-center mb-3">
+                  Sharp double-scale pulse.
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-heartbeat mb-6 flex shrink-0"
+                ></div>
+                <button
+                  onclick="replayAnim(this, 'animate-heartbeat')"
+                  class="text-xs w-full py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[200px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase mb-2"
+                >
+                  chai-animate-flash
+                </p>
+                <p class="text-[10px] text-gray-500 text-center mb-3">
+                  Flashes in and out rapidly.
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-flash mb-6 flex shrink-0"
+                ></div>
+                <button
+                  onclick="replayAnim(this, 'animate-flash')"
+                  class="text-xs w-full py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+
+              <div
+                class="p-4 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col items-center justify-between min-h-[200px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase mb-2"
+                >
+                  chai-animate-shake
+                </p>
+                <p class="text-[10px] text-gray-500 text-center mb-3">
+                  Shakes horizontally violently.
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-shake mb-6 flex shrink-0"
+                ></div>
+                <button
+                  onclick="replayAnim(this, 'animate-shake')"
+                  class="text-xs w-full py-1.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition cursor-pointer font-medium shadow-sm"
+                >
+                  Run animation
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section id="animation-modifiers" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Animation Modifiers
+              <a
+                href="#animation-modifiers"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              Fine-tune the behavior of ChaiTailwind's built-in animations and
+              transitions seamlessly. These utilities modify native CSS custom
+              variables <code>--chai-duration</code>, <code>--chai-delay</code>,
+              and <code>--chai-ease</code> under the hood to ensure fluid
+              orchestration.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              Supported Modifiers
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              <div
+                class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-5"
+              >
+                <h4
+                  class="font-semibold text-blue-500 mb-3 border-b border-gray-200 dark:border-gray-800 pb-2"
+                >
+                  Timing Control
+                </h4>
+                <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                  <li>
+                    <strong class="text-gray-900 dark:text-white block mb-1"
+                      >Duration</strong
+                    >
+                    <code>chai-duration-{50-5000}</code> configures how long an
+                    animation takes to complete. Steps mimic milliseconds.
+                  </li>
+                  <li>
+                    <strong class="text-gray-900 dark:text-white block mb-1"
+                      >Delay</strong
+                    >
+                    <code>chai-delay-{75-1000}</code> configures the resting
+                    threshold before playback begins.
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg p-5"
+              >
+                <h4
+                  class="font-semibold text-purple-500 mb-3 border-b border-gray-200 dark:border-gray-800 pb-2"
+                >
+                  Curves & Speed
+                </h4>
+                <ul class="space-y-3 text-sm text-gray-600 dark:text-gray-400">
+                  <li>
+                    <strong class="text-gray-900 dark:text-white block mb-1"
+                      >Easing</strong
+                    >
+                    <code>chai-ease-linear</code>, <code>chai-ease</code>,
+                    <code>chai-ease-in</code>, <code>chai-ease-out</code>,
+                    <code>chai-ease-in-out</code> modify the acceleration curve.
+                  </li>
+                  <li>
+                    <strong class="text-gray-900 dark:text-white block mb-1"
+                      >Semantic Speed</strong
+                    >
+                    <code>chai-ultra-fast</code>, <code>chai-very-fast</code>,
+                    <code>chai-fast</code>, <code>chai-normal</code>,
+                    <code>chai-slow</code>, <code>chai-very-slow</code>,
+                    <code>chai-ultra-slow</code> map safely to predefined MS
+                    ranges.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 mt-8 text-gray-900 dark:text-white"
+            >
+              Combined Examples
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              See how combining these utilities manipulates the
+              <code>animate-bounce</code> loop.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 rounded-lg flex flex-col items-center justify-center min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-4"
+                >
+                  Fast & Linear
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-bounce chai-duration-300 chai-ease-linear mb-6 flex shrink-0"
+                ></div>
+                <code
+                  class="text-[10px] bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-center w-full block"
+                  >duration-300<br />ease-linear</code
+                >
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 rounded-lg flex flex-col items-center justify-center min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-4"
+                >
+                  Ultra Slow Delay
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-bounce chai-ultra-slow chai-delay-500 mb-6 flex shrink-0"
+                ></div>
+                <code
+                  class="text-[10px] bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-center w-full block"
+                  >ultra-slow<br />delay-500</code
+                >
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950 rounded-lg flex flex-col items-center justify-center min-h-[220px]"
+              >
+                <p
+                  class="text-[11px] font-mono text-gray-500 text-center uppercase tracking-widest mb-4"
+                >
+                  High Duration Smooth
+                </p>
+                <div
+                  class="chai-bg-pink-500 chai-w-12 chai-h-12 chai-rounded-full shadow-md chai-animate-bounce chai-duration-2000 chai-ease-in-out mb-6 flex shrink-0"
+                ></div>
+                <code
+                  class="text-[10px] bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-center w-full block"
+                  >duration-2000<br />ease-in-out</code
+                >
+              </div>
+            </div>
+          </section>
+
+          <section id="variants" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Variants
+              <a
+                href="#variants"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              Variants are powerful prefixes that tell the ChaiTailwind engine
+              to conditionally apply styling based on interaction or theme
+              states.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              How Selectors are Modified
+            </h3>
+            <div
+              class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-4 text-sm text-indigo-800 dark:text-indigo-200 rounded-r-lg mb-8"
+            >
+              <p class="mb-2">
+                When the Chai parser parses a class prefixed with a variant like
+                <code>chai-hover:bg-red-500</code>, it escapes the special
+                characters and modifies the generated CSS selector before
+                heavily injecting it into the stylesheet.
+              </p>
+              <ul class="list-disc pl-5 space-y-1">
+                <li>
+                  <strong>Interaction state variants</strong> append
+                  pseudo-classes explicitly to the end of the selector (e.g.,
+                  <code>.chai-hover\:bg-red-500:hover</code>).
+                </li>
+                <li>
+                  <strong>Theme variants</strong> prepend a parent scope
+                  selector to ensure it only cascades down conditionally (e.g.,
+                  <code>.dark .chai-dark\:bg-black</code>).
+                </li>
+              </ul>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-purple-500 pl-3"
+            >
+              Hover & Group Hover Mechanisms
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              Use <code>chai-hover:*</code> to style an element on
+              <code>:hover</code> mouseover. To style an element dynamically
+              based on an ancestor's interaction state, tag the ancestor with
+              the <code>group</code> class and apply
+              <code>chai-group-hover:*</code> on the target child. This compiles
+              to the CSS syntax: <code>.group:hover .chai-group-hover\:*</code>.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center space-y-4"
+              >
+                <code
+                  class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-purple-600 dark:text-purple-400 font-bold"
+                  >chai-hover:bg-red-500</code
+                >
+                <button
+                  class="chai-bg-indigo-500 chai-hover-bg-red-500 chai-text-white chai-font-bold chai-py-2 chai-px-6 chai-rounded-lg chai-transition-all chai-duration-300"
+                >
+                  Hover Me
+                </button>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center space-y-4 group cursor-pointer"
+              >
+                <code
+                  class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-purple-600 dark:text-purple-400 font-bold"
+                  >chai-group-hover:text-blue-500</code
+                >
+                <div
+                  class="chai-p-4 chai-bg-white dark-bg-gray-800 chai-rounded-lg chai-shadow chai-border chai-border-gray-200 dark-border-gray-700 chai-transition-all chai-duration-300 chai-flex chai-items-center chai-gap-3"
+                >
+                  <span
+                    class="material-symbols-outlined chai-text-gray-400 chai-group-hover-text-blue-500 chai-transition-colors"
+                    >verified</span
+                  >
+                  <span
+                    class="chai-text-gray-600 dark:text-gray-300 chai-font-semibold chai-text-sm"
+                    >Hover the wrapper</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-gray-800 dark:border-gray-400 pl-3"
+            >
+              The .dark Class Modifier
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              Use the <code>chai-dark:*</code> prefix to serve specific utility
+              properties only when Dark Mode is fully active. Instead of media
+              queries, ChaiTailwind tightly binds dark variants to the
+              <code>.dark</code> parent class selector. This dictates that you
+              seamlessly apply or drop the <code>class="dark"</code> label on
+              the <code>&lt;html&gt;</code> element to safely orchestrate a
+              global theme toggle manually.
+            </p>
+
+            <div
+              class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900 mb-8 border-dashed"
+            >
+              <div
+                class="chai-p-6 chai-bg-white chai-dark-bg-gray-800 chai-rounded-xl chai-shadow-lg chai-border chai-border-gray-200 chai-dark-border-gray-700 chai-transition"
+              >
+                <p
+                  class="chai-text-gray-900 chai-dark-text-white chai-font-bold chai-text-lg chai-mb-2"
+                >
+                  Card Subject to System Theme
+                </p>
+                <p
+                  class="chai-text-sm chai-text-gray-600 chai-dark-text-gray-300"
+                >
+                  This card leverages <code>chai-dark-bg-gray-800</code> and
+                  <code>chai-dark-text-white</code> heavily. Because the
+                  documentation site typically injects <code>.dark</code> on the
+                  root when in dark mode natively, these styles override the
+                  light defaults seamlessly.
+                </p>
+              </div>
+              <div class="mt-4 text-center">
+                <code
+                  class="text-xs bg-gray-200 dark:bg-gray-800 px-3 py-1.5 rounded-full text-gray-700 dark:text-gray-300 font-mono shadow-sm"
+                  >class="chai-bg-white chai-dark-bg-gray-800 ..."</code
+                >
+              </div>
+            </div>
+          </section>
+
+          <section id="responsive" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Responsive Design
+              <a
+                href="#responsive"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind uses a mobile-first breakpoint system. Unprefixed
+              utilities take effect on all screen sizes, while responsive
+              prefixes conditionally apply styles at specific breakpoints and
+              above.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-blue-500 pl-3"
+            >
+              Supported Breakpoints
+            </h3>
+            <div class="overflow-x-auto mb-8">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3">Prefix</th>
+                    <th scope="col" class="px-6 py-3">Minimum Width</th>
+                    <th scope="col" class="px-6 py-3">CSS Equivalent</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      sm:
+                    </td>
+                    <td class="px-6 py-4 text-gray-900 dark:text-white">
+                      640px
+                    </td>
+                    <td class="px-6 py-4 font-mono text-xs text-gray-500">
+                      @media (min-width: 640px)
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      md:
+                    </td>
+                    <td class="px-6 py-4 text-gray-900 dark:text-white">
+                      768px
+                    </td>
+                    <td class="px-6 py-4 font-mono text-xs text-gray-500">
+                      @media (min-width: 768px)
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      lg:
+                    </td>
+                    <td class="px-6 py-4 text-gray-900 dark:text-white">
+                      1024px
+                    </td>
+                    <td class="px-6 py-4 font-mono text-xs text-gray-500">
+                      @media (min-width: 1024px)
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      xl:
+                    </td>
+                    <td class="px-6 py-4 text-gray-900 dark:text-white">
+                      1280px
+                    </td>
+                    <td class="px-6 py-4 font-mono text-xs text-gray-500">
+                      @media (min-width: 1280px)
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-3 text-gray-900 dark:text-white"
+            >
+              How Media Queries are Generated
+            </h3>
+            <div
+              class="bg-indigo-50 dark:bg-indigo-900/20 border-l-4 border-indigo-500 p-4 text-sm text-indigo-800 dark:text-indigo-200 rounded-r-lg mb-8"
+            >
+              <p class="mb-2">
+                When the Chai library encounters a responsive prefix like
+                <code>chai-md:p-20</code>, it:
+              </p>
+              <ol class="list-decimal pl-6 space-y-1">
+                <li>
+                  Strips the prefix to identify the base utility payload
+                  (<code>chai-p-20</code>).
+                </li>
+                <li>
+                  Generates the raw CSS payload mapping to the base utility.
+                </li>
+                <li>
+                  Wraps that generated CSS rule uniquely inside a
+                  <code>@media (min-width: [breakpoint])</code> block.
+                </li>
+                <li>Injects it safely into the dynamic runtime stylesheet.</li>
+              </ol>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white border-l-4 border-purple-500 pl-3"
+            >
+              Examples in Action
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              Resize your browser window tightly to see these utility
+              transitions take effect conditionally.
+            </p>
+
+            <div class="space-y-6 mb-10">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900"
+              >
+                <div class="mb-4">
+                  <code
+                    class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-pink-600 dark:text-pink-400 font-bold tracking-wide"
+                    >chai-p-4 chai-md:p-20</code
+                  >
+                  <p class="text-xs text-gray-500 mt-2">
+                    Applies strict padding universally, then upgrades to severe
+                    padding starting at 768px.
+                  </p>
+                </div>
+                <div
+                  class="chai-bg-pink-100 chai-dark-bg-pink-900/30 chai-border chai-border-pink-300 chai-dark-border-pink-700 chai-rounded-lg chai-p-4 chai-md:p-20 chai-transition-all chai-duration-500 text-center"
+                >
+                  <span
+                    class="chai-font-semibold chai-text-pink-800 chai-dark-text-pink-200"
+                    >Padding Resizes on MD Breakpoint</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900"
+              >
+                <div class="mb-4">
+                  <code
+                    class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-purple-600 dark:text-purple-400 font-bold tracking-wide"
+                    >chai-block chai-lg:grid chai-cols-3 chai-gap-4</code
+                  >
+                  <p class="text-xs text-gray-500 mt-2">
+                    Stacks elements block-level cleanly, then elegantly shifts
+                    to a 3-column grid layout permanently at 1024px.
+                  </p>
+                </div>
+                <div class="chai-block chai-lg:grid chai-cols-3 chai-gap-4">
+                  <div
+                    class="chai-bg-purple-100 chai-dark-bg-purple-900/30 chai-p-4 chai-rounded-lg chai-mb-4 chai-lg:mb-0 chai-text-center chai-font-semibold chai-text-purple-800 chai-dark-text-purple-200 chai-border chai-border-purple-200 chai-dark-border-purple-700"
+                  >
+                    Item 1
+                  </div>
+                  <div
+                    class="chai-bg-purple-100 chai-dark-bg-purple-900/30 chai-p-4 chai-rounded-lg chai-mb-4 chai-lg:mb-0 chai-text-center chai-font-semibold chai-text-purple-800 chai-dark-text-purple-200 chai-border chai-border-purple-200 chai-dark-border-purple-700"
+                  >
+                    Item 2
+                  </div>
+                  <div
+                    class="chai-bg-purple-100 chai-dark-bg-purple-900/30 chai-p-4 chai-rounded-lg chai-text-center chai-font-semibold chai-text-purple-800 chai-dark-text-purple-200 chai-border chai-border-purple-200 chai-dark-border-purple-700"
+                  >
+                    Item 3
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="dark-mode" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Dark Mode
+              <a
+                href="#dark-mode"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind natively supports manual scheme toggling via the
+              <code>.dark</code> class strategy. By appending
+              <code>chai-dark:</code> or <code>dark:</code> prefixes, utility
+              styles will strictly activate only when the
+              <code>&lt;html&gt;</code> element possesses the
+              <code>class="dark"</code> modifier.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-l-4 border-gray-800 dark:border-gray-400 pl-3"
+            >
+              API & Persistence
+            </h3>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              To simplify theme handling, ChaiTailwind heavily relies on the
+              implementation logic below which you can bind to your toggle
+              buttons:
+            </p>
+
+            <ul
+              class="list-disc pl-6 space-y-2 text-sm text-gray-600 dark:text-gray-400 mb-6 font-mono bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-800 p-4 rounded-lg"
+            >
+              <li>
+                <strong>toggleDarkMode()</strong>: A custom global function that
+                forcibly toggles the <code>.dark</code> class natively on the
+                root <code>&lt;html&gt;</code> element.
+              </li>
+              <li>
+                <strong>localStorage</strong>: Upon toggling, the function
+                securely sets <code>theme='dark'</code> or
+                <code>theme='light'</code> into browser
+                <code>localStorage</code> enforcing seamless persistence across
+                page reloads.
+              </li>
+            </ul>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-l-4 border-gray-800 dark:border-gray-400 pl-3"
+            >
+              Interactive Demo
+            </h3>
+
+            <div
+              class="mb-10 p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center space-y-6"
+            >
+              <code
+                class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-gray-600 dark:text-gray-300 font-bold"
+                >chai-bg-white chai-dark:bg-black</code
+              >
+              <div
+                class="chai-p-6 chai-bg-white chai-dark-bg-black chai-border chai-border-gray-200 chai-dark-border-gray-700 chai-rounded-xl chai-transition-colors chai-duration-500 chai-text-center shadow-sm w-full max-w-sm"
+              >
+                <h5
+                  class="chai-fs-4 chai-font-bold chai-text-gray-900 chai-dark-text-white chai-mb-1"
+                >
+                  Contrast Card
+                </h5>
+                <p
+                  class="chai-fs-2 chai-text-gray-500 chai-dark-text-gray-400 chai-mb-4"
+                >
+                  Click the button below to invoke <code>toggleDarkMode()</code>
+                </p>
+                <button
+                  onclick="toggleDarkMode()"
+                  class="chai-px-4 chai-py-2 chai-bg-gray-200 chai-hover-bg-gray-300 chai-dark-bg-gray-800 chai-dark-hover-bg-gray-700 chai-text-gray-800 chai-dark-text-white chai-text-sm chai-font-bold chai-rounded-lg chai-transition-colors active:chai-scale-95"
+                >
+                  Toggle Local Theme
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section id="responsive" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Responsive Design
+              <a
+                href="#responsive"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind embraces a strict mobile-first architecture.
+              Unprefixed utilities apply universally across all screen sizes,
+              while breakpoint prefixes override styles at specific screen
+              widths.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white"
+            >
+              Core Breakpoints
+            </h3>
+            <div class="overflow-x-auto mb-10">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 w-1/4">Prefix</th>
+                    <th scope="col" class="px-6 py-3 w-1/4 font-mono">
+                      Media Query
+                    </th>
+                    <th scope="col" class="px-6 py-3 w-1/2">Ideal Target</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      sm:
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      640px
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Large mobile phones in landscape & small tablets.
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      md:
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      768px
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Standard tablets (e.g., iPad portrait) & small laptops.
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      lg:
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      1024px
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Standard desktop monitors and laptops.
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      xl:
+                    </td>
+                    <td class="px-6 py-4 text-gray-500 font-mono text-xs">
+                      1280px
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Large desktop displays and ultrawide setups.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white"
+            >
+              Responsive Scaling Examples
+            </h3>
+            <p class="mb-4 text-gray-600 dark:text-gray-400 text-sm">
+              You can chain breakpoints iteratively. Resize your browser window
+              horizontally to watch the examples below dynamically adapt!
+            </p>
+
+            <div class="grid grid-cols-1 gap-6 mb-8">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col space-y-4"
+              >
+                <span
+                  class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-gray-600 dark:text-gray-300 font-bold self-start font-mono"
+                  >chai-p-4 chai-md:p-10 chai-xl:p-20</span
+                >
+                <div
+                  class="chai-border-2 chai-border-dashed chai-border-indigo-300 dark:border-indigo-800 chai-rounded-xl"
+                >
+                  <div
+                    class="chai-bg-indigo-500/20 chai-p-4 chai-md-p-10 chai-xl-p-20 chai-rounded-lg chai-transition-all chai-duration-500 chai-flex chai-items-center chai-justify-center"
+                  >
+                    <span
+                      class="chai-text-indigo-600 dark-text-indigo-400 chai-font-bold chai-text-center"
+                      >Padding scales intelligently<br />from 16px to
+                      80px.</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 rounded-lg flex flex-col space-y-4"
+              >
+                <span
+                  class="text-xs bg-gray-200 dark:bg-gray-800 px-2 py-1 rounded text-gray-600 dark:text-gray-300 font-bold self-start font-mono"
+                  >chai-flex chai-flex-col chai-lg:grid chai-lg:cols-3</span
+                >
+                <div
+                  class="chai-flex chai-flex-col chai-lg-grid chai-lg-cols-3 chai-gap-4 chai-transition-all chai-duration-500"
+                >
+                  <div
+                    class="chai-bg-purple-500 chai-h-16 chai-rounded-lg chai-shadow-md chai-flex chai-items-center chai-justify-center chai-text-white chai-font-bold"
+                  >
+                    1
+                  </div>
+                  <div
+                    class="chai-bg-purple-500 chai-h-16 chai-rounded-lg chai-shadow-md chai-flex chai-items-center chai-justify-center chai-text-white chai-font-bold"
+                  >
+                    2
+                  </div>
+                  <div
+                    class="chai-bg-purple-500 chai-h-16 chai-rounded-lg chai-shadow-md chai-flex chai-items-center chai-justify-center chai-text-white chai-font-bold"
+                  >
+                    3
+                  </div>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-2">
+                  Stacks on mobile, snaps to a 3-column grid on desktop (lg).
+                </p>
+              </div>
+            </div>
+          </section>
+          <section id="combining-utilities" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Combining Utilities
+              <a
+                href="#combining-utilities"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-4 text-gray-600 dark:text-gray-400">
+              ChaiTailwind fundamentally relies on class stacking. Because there
+              are no pre-built monolithic components, developers construct
+              interfaces by combining primitive utilities that independently
+              inject strictly layered layout logic.
+            </p>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-l-4 border-indigo-500 pl-3"
+            >
+              The Utility Stack
+            </h3>
+
+            <div
+              class="mb-8 p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900 flex flex-col items-start shadow-sm"
+            >
+              <code
+                class="text-xs bg-gray-200 dark:bg-gray-800 px-3 py-2 rounded text-gray-800 dark:text-gray-200 font-bold mb-6 inline-block font-mono border border-gray-300 dark:border-gray-700"
+              >
+                &lt;div class="<span class="text-blue-600 dark:text-blue-400"
+                  >chai-bg-blue-500</span
+                >
+                <span class="text-green-600 dark:text-green-400"
+                  >chai-p-20</span
+                >
+                <span class="text-orange-600 dark:text-orange-400"
+                  >chai-rounded-lg</span
+                >
+                <span class="text-purple-600 dark:text-purple-400"
+                  >chai-animate-fade</span
+                >"&gt;
+              </code>
+              <p class="text-sm text-gray-500 mb-6 font-semibold">
+                Each primitive dynamically acts as an isolated rendering
+                instruction:
+              </p>
+              <ul class="space-y-4 text-sm flex flex-col font-mono w-full">
+                <li
+                  class="flex items-center gap-4 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-700"
+                >
+                  <span
+                    class="chai-bg-blue-100 chai-dark-bg-blue-900/40 chai-text-blue-600 chai-dark-text-blue-400 chai-px-3 chai-py-1.5 chai-rounded text-xs shrink-0 w-36 text-center shadow-sm"
+                    >chai-bg-blue-500</span
+                  >
+                  <span class="text-gray-600 dark:text-gray-400 font-sans"
+                    >Applies the primary background hue heavily tied to
+                    <code>--chai-bg-opacity</code> overrides.</span
+                  >
+                </li>
+                <li
+                  class="flex items-center gap-4 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-700"
+                >
+                  <span
+                    class="chai-bg-green-100 chai-dark-bg-green-900/40 chai-text-green-600 chai-dark-text-green-400 chai-px-3 chai-py-1.5 chai-rounded text-xs shrink-0 w-36 text-center shadow-sm"
+                    >chai-p-20</span
+                  >
+                  <span class="text-gray-600 dark:text-gray-400 font-sans"
+                    >Injects 5rem (80px calculated) of mathematically uniform
+                    padding structure.</span
+                  >
+                </li>
+                <li
+                  class="flex items-center gap-4 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-700"
+                >
+                  <span
+                    class="chai-bg-orange-100 chai-dark-bg-orange-900/40 chai-text-orange-600 chai-dark-text-orange-400 chai-px-3 chai-py-1.5 chai-rounded text-xs shrink-0 w-36 text-center shadow-sm"
+                    >chai-rounded-lg</span
+                  >
+                  <span class="text-gray-600 dark:text-gray-400 font-sans"
+                    >Adds structurally pleasing 0.5rem border-radius to the node
+                    boundaries.</span
+                  >
+                </li>
+                <li
+                  class="flex items-center gap-4 bg-white dark:bg-gray-800 p-3 rounded-lg border border-gray-100 dark:border-gray-700"
+                >
+                  <span
+                    class="chai-bg-purple-100 chai-dark-bg-purple-900/40 chai-text-purple-600 chai-dark-text-purple-400 chai-px-3 chai-py-1.5 chai-rounded text-xs shrink-0 w-36 text-center shadow-sm"
+                    >chai-animate-fade</span
+                  >
+                  <span class="text-gray-600 dark:text-gray-400 font-sans"
+                    >Locally scopes and triggers the built-in fade CSS
+                    keyframes.</span
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <h3
+              class="text-lg font-semibold mb-4 text-gray-900 dark:text-white mt-8 border-l-4 border-indigo-500 pl-3"
+            >
+              Real UI Construct
+            </h3>
+            <p class="mb-6 text-gray-600 dark:text-gray-400 text-sm">
+              Combining vast sums of utilities is entirely what empowers
+              developers to rapidly prototype beautiful, interactive UI modules
+              natively in standard HTML.
+            </p>
+
+            <div
+              class="mb-4 flex flex-col space-y-4 justify-center p-8 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900/50"
+            >
+              <code
+                class="text-[10px] sm:text-xs bg-gray-200 dark:bg-gray-800 px-3 py-2 rounded text-gray-500 font-bold mb-4 font-mono w-full overflow-x-auto whitespace-nowrap border border-gray-300 dark:border-gray-700"
+              >
+                class="chai-bg-blue-500 chai-p-10 chai-md-p-16 chai-rounded-2xl
+                chai-animate-fade<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chai-shadow-xl
+                chai-transition-transform chai-hover-scale-105<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;chai-flex
+                chai-flex-col chai-items-center chai-text-white group
+                cursor-pointer"
+              </code>
+
+              <div
+                class="chai-bg-blue-500 chai-p-10 chai-md-p-16 chai-rounded-2xl chai-animate-fade chai-shadow-xl chai-transition-transform chai-hover-scale-105 chai-flex chai-flex-col chai-items-center chai-justify-center chai-text-white chai-cursor-pointer group chai-mx-auto chai-w-64 sm:chai-w-80 border border-white/20"
+              >
+                <span
+                  class="material-symbols-outlined chai-fs-10 chai-mb-4 chai-group-hover-animate-bounce chai-transition-colors"
+                  >cloud_download</span
+                >
+                <h4 class="chai-fs-5 chai-font-bold chai-mb-2">
+                  Download Package
+                </h4>
+                <p
+                  class="chai-text-blue-100 chai-text-center chai-fs-2 chai-leading-relaxed"
+                >
+                  Stacks background, scalable responsive padding, rounded
+                  variants, shadows, flex alignments, &amp; interactive scale
+                  transitions completely simultaneously.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="performance" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              Performance & Architecture
+              <a
+                href="#performance"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <p class="mb-6 text-gray-600 dark:text-gray-400">
+              ChaiTailwind was fundamentally engineered from the ground up to
+              guarantee a sub-millisecond footprint on your web applications. It
+              achieves zero build-step instant rendering using a triad of highly
+              optimized techniques running natively in the browser.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900/50 shadow-sm transition-transform hover:-translate-y-1 duration-300"
+              >
+                <span
+                  class="material-symbols-outlined chai-text-indigo-500 chai-fs-8 chai-mb-4 chai-block"
+                  >memory</span
+                >
+                <h3
+                  class="text-lg font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Strict Caching
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Internally, every generated class is securely mapped to a
+                  global Javascript <code>Set</code> cache. Once a class reaches
+                  the cache, it bypasses the Regex core entirely on future hits.
+                </p>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900/50 shadow-sm transition-transform hover:-translate-y-1 duration-300"
+              >
+                <span
+                  class="material-symbols-outlined chai-text-green-500 chai-fs-8 chai-mb-4 chai-block"
+                  >library_add_check</span
+                >
+                <h3
+                  class="text-lg font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Generate Once
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Even if duplicate utility classes are scattered across a
+                  thousand disparate nodes, they inherently only yield exactly
+                  one distinct CSS rule block being physically injected to the
+                  style tag.
+                </p>
+              </div>
+
+              <div
+                class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl bg-gray-50 dark:bg-gray-900/50 shadow-sm transition-transform hover:-translate-y-1 duration-300"
+              >
+                <span
+                  class="material-symbols-outlined chai-text-blue-500 chai-fs-8 chai-mb-4 chai-block"
+                  >visibility</span
+                >
+                <h3
+                  class="text-lg font-bold text-gray-900 dark:text-white mb-2"
+                >
+                  Mutation Efficiency
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  ChaiTailwind exploits the native DOM
+                  <code>MutationObserver</code> API. It only bothers scanning
+                  explicitly new nodes hitting the tree natively without ever
+                  unnecessarily locking the main thread.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="api-reference" class="mb-16 scroll-mt-24">
+            <h2
+              class="text-2xl font-bold border-b border-gray-200 dark:border-gray-800 pb-2 mb-6 group flex items-center"
+            >
+              JavaScript API Reference
+              <a
+                href="#api-reference"
+                class="ml-2 opacity-0 group-hover:opacity-100 text-gray-400 hover:text-blue-500 transition-opacity"
+                >#</a
+              >
+            </h2>
+
+            <div class="overflow-x-auto">
+              <table
+                class="w-full text-sm text-left border border-gray-200 dark:border-gray-800 rounded-lg"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400"
+                >
+                  <tr>
+                    <th scope="col" class="px-6 py-3 rounded-tl-lg">Method</th>
+                    <th scope="col" class="px-6 py-3">Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      ChaiCSS.init()
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Bootstraps the MutationObserver and injects keyframe
+                      rules. Called automatically if window is present.
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      ChaiCSS.scan(node)
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Force scans a specific DOM node or document for unparsed
+                      classes.
+                    </td>
+                  </tr>
+                  <tr
+                    class="bg-white border-b dark:bg-gray-900 dark:border-gray-800"
+                  >
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      ChaiCSS.destroy()
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Disconnects the MutationObserver safely. Useful for SPA
+                      unmounting.
+                    </td>
+                  </tr>
+                  <tr class="bg-white dark:bg-gray-900">
+                    <td class="px-6 py-4 font-mono font-medium text-blue-500">
+                      window.toggleDarkMode()
+                    </td>
+                    <td class="px-6 py-4 text-gray-600 dark:text-gray-400">
+                      Toggles the `dark` class on html and saves states to
+                      localStorage.
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <footer
+            class="pt-8 mt-16 border-t border-gray-200 dark:border-gray-800 flex justify-between text-sm text-gray-500"
+          >
+            <span>© 2026 ChaiTailwind</span>
+            <span>Designed for pure speed.</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
